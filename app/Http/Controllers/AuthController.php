@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
@@ -36,7 +37,7 @@ class AuthController extends Controller
 
         return response()->json(compact('user', 'token'), 201);
     }
-    
+
 //THIS FUNCTION ALLOWS LOGIN REGISTERED USER
     public function login(Request $request)
     {
