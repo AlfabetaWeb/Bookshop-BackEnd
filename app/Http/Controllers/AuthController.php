@@ -57,4 +57,10 @@ class AuthController extends Controller
         ]);
     }
 
+//THIS FUNCTION SHOWS REGISTERED USER
+    public function me()
+    {
+        return response()->json(auth()->user());;
+    }
+    
 }
