@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//GENERAL ACCESS USER
+Route::post('/register', [AuthController::class, 'register']);
