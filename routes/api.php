@@ -17,3 +17,4 @@ use App\Http\Controllers\AuthController;
 
 //GENERAL ACCESS USER
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
