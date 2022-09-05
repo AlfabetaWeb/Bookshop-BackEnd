@@ -30,7 +30,7 @@ class ClubController extends Controller
                 );
             };
 
-            $title = $request->input('clubName');
+            $clubName = $request->input('clubName');
             $userId = auth()->user()->id;
 
             $club = new Club();
