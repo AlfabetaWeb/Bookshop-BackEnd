@@ -23,3 +23,9 @@ Route::group(["middleware" => "jwt.auth"] , function() {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']); 
 });
+
+// CLUBS
+Route::group(["middleware" => "jwt.auth"] , function() {
+    Route::post('/club', [ClubController::class, 'createClub']);
+  
+});
