@@ -84,4 +84,51 @@ class AuthController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+//THIS FUNCTION ALLOWS USER TO DELETE ITS DATA
+    public function delete(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+
+        try {
+            JWTAuth::invalidate($request->token);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'User deleted successfully'
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, the user cannot be deleted'
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+//THIS FUNCTION ALLOWS USER TO EDIT ITS DATA
+    public function set(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $user = User::set([
+            'name' => $request->set('name'),
+            'email' => $request->set('email'),
+            'password' => bcrypt($request->password)
+        ]);
+
+        $user->roles()->attach(self::ROLE_USER);
+
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json(compact('user', 'token'), 201);
+    }
 }

@@ -21,7 +21,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(["middleware" => "jwt.auth"] , function() {
     Route::get('/me', [AuthController::class, 'me']);
-    Route::post('/logout', [AuthController::class, 'logout']); 
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::delete('/delete', [AuthController::class, 'delete']); 
+    Route::set('/edit', [AuthController::class, 'edit']);
 });
 
 // CLUBS
