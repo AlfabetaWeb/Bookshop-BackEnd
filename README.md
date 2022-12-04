@@ -17,5 +17,5 @@ This project is complemented with a Frontend executed with React that is availab
 
 ## Improvements
 <p align="justify">
-This project is able to improve with more detailed info about the Users, Activities and their interactions
+This project is able to improve with more detailed info about the Users, Activities and their interaction
 </p>

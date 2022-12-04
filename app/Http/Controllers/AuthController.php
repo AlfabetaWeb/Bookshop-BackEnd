@@ -107,7 +107,7 @@ class AuthController extends Controller
         }
     }
 //THIS FUNCTION ALLOWS USER TO EDIT ITS DATA
-    public function set(Request $request)
+    public function get(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
